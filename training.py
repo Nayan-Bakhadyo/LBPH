@@ -4,21 +4,25 @@ import os
 import sys
 import face_recognition as fr 
 
+#user id as id for storing dataset
+id=2
+str_id = str(id)                # To use in url
+
 test_img=cv2.imread(r'/Users/nayand/Desktop/Major project/Face Recognition/test img/img1.jpg')
 print(test_img)
 faces_detected,gray_img=fr.faceDetection(test_img)
 print("Face detected: ",faces_detected)
 
 #Training will begin from here
-faces,faceID=fr.labels_for_training_data(r'/Users/nayand/Desktop/Major project/Face Recognition/images')
+faces,faceID=fr.labels_for_training_data(r'/Users/nayand/Desktop/Major project/Face Recognition/images/' +str_id+'/')
 
 # os.system("training.py")
 
 
 face_recognizer=fr.train_classifier(faces,faceID)
-face_recognizer.save(r'/Users/nayand/Desktop/Major project/Face Recognition/trainingData.yml')
+face_recognizer.save(r'/Users/nayand/Desktop/Major project/Face Recognition/images/' + str_id +'/trainingData.yml')
 
-name={0: 'Nayan Bakhadyo',1: 'Robert Downey Jr'}
+# name={0: 'Nayan Bakhadyo',1: 'Robert Downey Jr'}
 
 for face in faces_detected:
     (x,y,w,h)=face
@@ -27,7 +31,7 @@ for face in faces_detected:
     print(label)
     print(confidence)
     fr.draw_rect(test_img,face)
-    predict_name=name[label]
+    predict_name=str(label)
     if(confidence>35):
         fr.put_text(test_img,'unknown',x,y)
     else:
