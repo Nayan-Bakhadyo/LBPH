@@ -1,6 +1,7 @@
 import numpy as np
 import cv2
 import os
+import connector as con
 import face_recognition as fr 
 
 number_of_record = len(next(os.walk(r'/Users/nayand/Desktop/Major project/Face Recognition/images'))[1])
@@ -30,6 +31,7 @@ for i in range(0,number_of_record):
             confidence_level = confidence
             closest_id = label
         fr.draw_rect(test_img,face)
+
 predict_name=str(closest_id)
 if(confidence_level>25):
     fr.put_text(test_img,'unknown',x,y)
@@ -39,9 +41,13 @@ else:
 print("Id of recognized face: "+ str(closest_id) +" with confidence: "+str(confidence_level))
 resized_img=cv2.resize(test_img,(1000,700))
 
+con.initialize(closest_id)
+os.system('python connector.py')
 cv2.imshow("face detection ",resized_img)
 cv2.waitKey(0)
 cv2.destroyAllWindows()
+
+
 
 # The lower the confidence the better
 # Confidence is distance between two histogram
