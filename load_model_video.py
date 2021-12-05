@@ -9,9 +9,9 @@ faces_detected,gray_img=fr.faceDetection(test_img)
 print("Face detected: ",faces_detected)
 
 #Training will begin from here
-
+i=0
 face_recognizer=cv2.face.LBPHFaceRecognizer_create()
-face_recognizer.read(r'/Users/nayand/Desktop/Major project/Face Recognition/trainingData.yml')
+face_recognizer.read(r'/Users/nayand/Desktop/Major project/Face Recognition/images/'+str(i)+'/trainingData.yml')
 
 cap=cv2.VideoCapture(0)
 size = (

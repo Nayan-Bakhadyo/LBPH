@@ -12,3 +12,6 @@ def initialize(id):
     print(json.dumps(resp))
     sys.stdout.flush()
 
+def get_id():
+    details=sys.argv[1]
+    print (details)
