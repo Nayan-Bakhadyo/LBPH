@@ -4,12 +4,12 @@ import os
 import connector as con
 import face_recognition as fr 
 
-number_of_record = len(next(os.walk(r'/Users/nayand/Desktop/Major project/Face Recognition/images'))[1])
+number_of_record = len(next(os.walk(r'images'))[1])
 closest_id=0                                #To store id of recognized person
 confidence_level=1000
 # number_of_record=3                          #Number of dataset or we can fetch number of rows in database
 
-test_img=cv2.imread(r'/Users/nayand/Desktop/Major project/Face Recognition/test img/i.jpg')
+test_img=cv2.imread(r'test img/rojin.jpg')
 
 for i in range(0,number_of_record):
     faces_detected,gray_img=fr.faceDetection(test_img)
@@ -17,7 +17,7 @@ for i in range(0,number_of_record):
         
     #Training will begin from here
     face_recognizer=cv2.face.LBPHFaceRecognizer_create()
-    face_recognizer.read(r'/Users/nayand/Desktop/Major project/Face Recognition/images/'+str(i)+'/trainingData.yml')
+    face_recognizer.read(r'images/'+str(i)+'/trainingData.yml')
 
     # name={0: 'Nayan Bakhadyo',1: 'Robert Downey Jr'}
 
@@ -42,7 +42,7 @@ print("Id of recognized face: "+ str(closest_id) +" with confidence: "+str(confi
 resized_img=cv2.resize(test_img,(1000,700))
 
 con.initialize(closest_id)
-os.system('python connector.py')
+# os.system('python connector.py')  to run connector.py
 cv2.imshow("face detection ",resized_img)
 cv2.waitKey(0)
 cv2.destroyAllWindows()

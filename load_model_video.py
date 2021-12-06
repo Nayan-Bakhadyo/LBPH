@@ -3,7 +3,7 @@ import cv2
 import os
 import face_recognition as fr 
 
-test_img=cv2.imread(r'/Users/nayand/Desktop/Major project/Face Recognition/test img/img2.jpg')
+test_img=cv2.imread(r'test img/img2.jpg')
 
 faces_detected,gray_img=fr.faceDetection(test_img)
 print("Face detected: ",faces_detected)
@@ -11,7 +11,7 @@ print("Face detected: ",faces_detected)
 #Training will begin from here
 i=0
 face_recognizer=cv2.face.LBPHFaceRecognizer_create()
-face_recognizer.read(r'/Users/nayand/Desktop/Major project/Face Recognition/images/'+str(i)+'/trainingData.yml')
+face_recognizer.read(r'images/'+str(i)+'/trainingData.yml')
 
 cap=cv2.VideoCapture(0)
 size = (
@@ -40,8 +40,7 @@ while True:
         fr.put_text2(test_img,predict_name,x,y)
 
     resized_img=cv2.resize(test_img,(1000,700))
-
     cv2.imshow("face detection ",resized_img)
     if cv2.waitKey(10)==ord('q'):
-        break
         cv2.destroyAllWindows()
+        break

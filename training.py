@@ -5,22 +5,22 @@ import sys
 import face_recognition as fr 
 
 #user id as id for storing dataset
-id=2
+id=4
 str_id = str(id)                # To use in url
 
-test_img=cv2.imread(r'/Users/nayand/Desktop/Major project/Face Recognition/test img/img1.jpg')
+test_img=cv2.imread(r'test img/img1.jpg')
 print(test_img)
 faces_detected,gray_img=fr.faceDetection(test_img)
 print("Face detected: ",faces_detected)
 
 #Training will begin from here
-faces,faceID=fr.labels_for_training_data(r'/Users/nayand/Desktop/Major project/Face Recognition/images/' +str_id+'/')
+faces,faceID=fr.labels_for_training_data(r'images/' +str_id+'/')
 
 # os.system("training.py")
 
 
 face_recognizer=fr.train_classifier(faces,faceID)
-face_recognizer.save(r'/Users/nayand/Desktop/Major project/Face Recognition/images/' + str_id +'/trainingData.yml')
+face_recognizer.save(r'images/' + str_id +'/trainingData.yml')
 
 # name={0: 'Nayan Bakhadyo',1: 'Robert Downey Jr'}
 

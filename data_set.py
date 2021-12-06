@@ -3,12 +3,12 @@ import os
 import sys
 
 try:
-    parent_dir = "/Users/nayand/Desktop/Major project/Face Recognition/images/"
-    id = 2                              #Id equivalent to id of new user from front-end
+    parent_dir = "images/"
+    id = 5                            #Id equivalent to id of new user from front-end
     str_id = str(id)
     path = os.path.join(parent_dir, str_id)
     os.mkdir(path)
-    child_dir="/Users/nayand/Desktop/Major project/Face Recognition/images/" + str_id+ "/"
+    child_dir="images/" + str_id+ "/"
     path = os.path.join(child_dir, str_id)
     os.mkdir(path)
 except FileExistsError as e:
@@ -23,8 +23,9 @@ while True:
     ret,frame = vidStream.read()
     cv2.imshow("Scanning.......", frame)
 
-    cv2.imwrite(r"/Users/nayand/Desktop/Major project/Face Recognition/images/"+str_id+"/"+str_id+"/image%04i.jpg" %cpt,frame)
+    cv2.imwrite(r"images/"+str_id+"/"+str_id+"/image%04i.jpg" %cpt,frame)
     cpt +=1
 
     if cv2.waitKey(10)==ord('q'):
+        cv2.destroyAllWindows()
         break
