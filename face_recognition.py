@@ -32,14 +32,43 @@ def labels_for_training_data(directory):
                 (x,y,w,h)=faces_rect[0]                                                # roi = Region of intrest
                 roi_gray=gray_img[y:y+w,x:x+h]                                         # size of box
                 faces.append(roi_gray)
-                faceID.append(int(id))
+                faceID.append(str(id))
             except (IndexError) as e:
                 os.remove(img_path)
     return faces, faceID
 
+def labels_for_training_data2(directory):
+    faces=[]
+    faceID=[]
+    for path,subdirnames,filenames in os.walk(directory):
+        for filename in filenames:
+            if filename.startswith("."):
+                # print("Skipping system File")                                     # To skip other than image files
+                continue
+            id=os.path.basename(path)
+            img_path=os.path.join(path,filename)
+            # print("img_path",img_path)
+            # print("id",id)
+            test_img=cv2.imread(img_path)
+            if test_img is None:                                                   # If file(image) is empty 
+                # print("Not Loaded Properly")
+                continue
+            try:
+                faces_rect,gray_img=faceDetection(test_img)                            # To put rectangle around faces
+                (x,y,w,h)=faces_rect[0]                                                # roi = Region of intrest
+                roi_gray=gray_img[y:y+w,x:x+h]                                         # size of box
+                faces.append(roi_gray)
+                faceID.append(str(id))
+            except (IndexError) as e:
+                os.remove(img_path)
+    return faces, faceID
+
+
 def train_classifier(faces, faceID):
     face_recognizer=cv2.face.LBPHFaceRecognizer_create()
-    face_recognizer.train(faces, np.array(faceID))
+    # face_recognizer.train(faces, np.array(faceID))
+    labels=[0]*len(faces)
+    face_recognizer.train(faces, np.array(labels))
     return face_recognizer
 
 def draw_rect(test_img,face):
