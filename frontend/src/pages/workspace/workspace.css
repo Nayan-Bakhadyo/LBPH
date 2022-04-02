@@ -1,0 +1,14 @@
+.dashcontent{
+    margin: 1rem;
+    border: 2px solid #302e59;
+    border-radius: 10px;
+    padding:1.2rem;
+    font-size: 18px;
+    align-items: center;
+}
+.card-report{
+    /* box-shadow: 3px 3px 3px 3px #888885; */
+    margin-top: 60px;
+    -webkit-box-shadow: 0 0 18px #888885 !important;
+        box-shadow: 0 0 18px #888885 !important;
+}

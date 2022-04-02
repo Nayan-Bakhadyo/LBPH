@@ -1,0 +1,19 @@
+.infoBox__cases {
+    color: #cc1034;
+    font-weight: 550;
+    font-size: 1.75rem;
+    margin-bottom: 0.5rem;
+}
+
+.infoBox__total {
+    color: #6c757d;
+    font-weight: 700 !important;
+    font-size: 0.8rem !important;
+    margin-top: 15px;
+}
+.infoBox__cases_recovered{
+    color:#417508;
+    font-weight: 550;
+    font-size: 1.75rem;
+    margin-bottom: 0.5rem;
+}

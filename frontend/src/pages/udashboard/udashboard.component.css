@@ -1,0 +1,19 @@
+.ga__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.1px;
+}
+
+.ga__stats {
+    display: flex;
+    justify-content: space-around;
+}
+.ga__title{
+    padding: 1%;
+    margin-left: 0.8rem;
+}
+.ga__select{
+    
+    margin-right: 1.5rem;
+}

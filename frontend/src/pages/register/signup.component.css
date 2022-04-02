@@ -1,0 +1,11 @@
+.regcontainer {
+  border: 1px solid black;
+}
+.errormsg {
+  padding: 8px;
+  background-color: #f76f6f;
+  color: black;
+  margin-bottom: 15px;
+  border-radius: 3px;
+  text-align: center;
+}

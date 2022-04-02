@@ -1,10 +1,15 @@
 // import mongoose from 'mongoose';
 const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
+const { v4: uuidv4 } = require("uuid");
 
 const userSchema = mongoose.Schema(
   {
-    _id: Number,
+    // _id: Number,
+    // id: { type: String, default: uuidv4() },
+    // _id: mongoose.ObjectId,
+
+    // pId: Number,
     name: {
       type: String,
       required: true,
@@ -19,7 +24,7 @@ const userSchema = mongoose.Schema(
       required: true,
     },
     age: {
-      type: Number,
+      type: String,
       required: true,
     },
     sex: {

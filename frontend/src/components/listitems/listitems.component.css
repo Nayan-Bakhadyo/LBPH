@@ -1,0 +1,7 @@
+a {
+  text-decoration: none;
+  color: inherit;
+}
+.MuiListItemText-primary{
+  font-size: 18px !important;
+}
